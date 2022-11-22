@@ -18,15 +18,16 @@ public class JpaMain {
 
         try {
 
-            Member member = new Member();
-            member.setUserName("user1");
-            member.setCreatedBy("han");
-            member.setCreatedDate(LocalDateTime.now());
+            Child child1 = new Child();
+            Child child2 = new Child();
 
-            em.persist(member);
+            Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
 
-            em.flush();
-            em.clear();
+            em.persist(parent);
+//            em.persist(child1);
+//            em.persist(child2);
 
             tx.commit();
         } catch (Exception e) {

@@ -12,10 +12,13 @@ public class Member extends BaseEntity {
     @Column(name = "USERNAME")
     private String userName;
 
-//    @Column(name = "TEAM_ID")
-//    private Long teamId;
+    @Embedded
+    private Period workPeriod;
 
-    @ManyToOne
+    @Embedded
+    private Address homeAddress;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
